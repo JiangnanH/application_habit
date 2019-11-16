@@ -7,7 +7,7 @@ __author__ = 'Michael Liao'
 async web application.
 '''
 
-import logging; logging.basicConfig(level=logging.INFO)
+import logging; logging.basicConfig(level=logging.INFO) #生成日志文件
 
 import asyncio, os, json, time
 from datetime import datetime
@@ -15,11 +15,12 @@ from datetime import datetime
 from aiohttp import web
 
 def index(request):
-    return web.Response(body=b'<h1>Amazing!</h1>',headers={'content-type':'text/html'})
+    return web.Response(body=b'<h1>Amazing!</h1>',headers={'content-type':'text/html'}) #http 的 header 和 body
 
-async def init(loop):
+async def init(loop): #异步函数
     app = web.Application(loop=loop)
     app.router.add_route('GET', '/', index)
+    app.router.add_route('GET', '/hello', index)
     srv = await loop.create_server(app.make_handler(), '127.0.0.1', 9000)
     logging.info('server started at http://127.0.0.1:9000...')
     return srv
