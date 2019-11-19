@@ -1,1 +1,1 @@
-#This is a web application created with django.
+# This is a web application created with django.
