@@ -1,0 +1,13 @@
+{% if article_list %}
+<form action="{% url 'habit:vote' %}" method="post">
+{% csrf_token %}
+{% for article in article_list %}
+    <input type="radio" name="addOne" id="article{{ forloop.counter }}" value="{{ article.id }}">
+    <label for="article{{ forloop.counter }}">{{ article.title }}</label>
+    <label for="article{{ forloop.counter }}">{{ article.number }}</label>
+<br>
+{% endfor %}
+<input type="submit" value="addAll">
+{% else %}
+    <p>No articles are available.</p>
+{% endif %}
