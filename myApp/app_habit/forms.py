@@ -1,7 +1,7 @@
 from django import forms
-from app_habit.models import Article
+from app_habit.models import Habit
 
-class ArticleForm(forms.ModelForm):
+class HabitForm(forms.ModelForm):
     class Meta:
-        model = Article
+        model = Habit
         fields = ['title', 'category', 'number', 'content']
