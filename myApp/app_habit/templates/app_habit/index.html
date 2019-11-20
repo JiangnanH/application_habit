@@ -1,13 +1,17 @@
 {% if habit_list %}
     <ul>
+    <a href="{% url 'habit:add_habit' %}">Add another habit</a>
     {% for habit in habit_list %}
         <li>
-          <a href="/polls/{{ question.id }}/">{{ habit.title }}</a>
-          <a href="/polls/{{ question.id }}/">{{ habit.number }}</a>
-        </li>
+          <a>Habit: {{ habit.title }}; </a><br>
+          <a>Number: {{ habit.number }}; </a><br>
+          <a>At Time: {{ habit.date_time }}; </a><br>
+          <a>Details: {{ habit.content }}; </a><br>
+        </li><br>
     {% endfor %}
-    <a href="habit:add_habit">"Add"</a>
+    <a href="{% url 'habit:add_habit' %}">Add another habit</a>
     </ul>
 {% else %}
-    <p>No habits are available.</p>
+    <p>No habits are available.</p><br>
+    <a href="{% url 'habit:add_habit' %}">Add your first habit</a>
 {% endif %}

@@ -35,26 +35,3 @@ def submit_habit(request):
         'form': form,
     }
     return render(request, 'app_habit/form.html', context=context)
-
-
-def results(request, question_id):
-    response = "You're looking at the results of question %s."
-    return HttpResponse(response % question_id)
-
-def vote(request):
-    habit = get_object_or_404(Habit)
-    try:
-        selected_choice = habit.habit_list.get(pk=request.POST['habit'])
-    except (KeyError, Habit.DoesNotExist):
-        # Redisplay the question voting form.
-        return render(request, 'habit:detail.html', {
-            'habit': habit,
-            'error_message': "You didn't select a choice.",
-        })
-    else:
-        selected_choice.number += 1
-        selected_choice.save()
-        # Always return an HttpResponseRedirect after successfully dealing
-        # with POST data. This prevents data from being posted twice if a
-        # user hits the Back button.
-        return HttpResponseRedirect(reverse('habit:Home', args=(habit.id,)))

@@ -3,22 +3,22 @@
   {% csrf_token %}
   <div class="row">
     <div class="col-md-4">
-      <label for="{{ form.title.id_for_label }}">{{ form.title.label }}：</label>
+      <label for="{{ form.title.id_for_label }}">Name Of Habit：</label>
       {{ form.title }}
       {{ form.title.errors }}
     </div>
     <div class="col-md-4">
-      <label for="{{ form.category.id_for_label }}">{{ form.category.label }}：</label>
+      <label for="{{ form.category.id_for_label }}">Type Of Habit：</label>
       {{ form.category }}
       {{ form.category.errors }}
     </div>
     <div class="col-md-4">
-      <label for="{{ form.number.id_for_label }}">{{ form.number.label }}：</label>
+      <label for="{{ form.number.id_for_label }}">Number Of Habit：</label>
       {{ form.number }}
       {{ form.number.errors }}
     </div>
     <div class="col-md-12">
-      <label for="{{ form.content.id_for_label }}">{{ form.content.label }}：</label>
+      <label for="{{ form.content.id_for_label }}">Details：</label>
       {{ form.content }}
       {{ form.content.errors }}
       <button type="submit" class="comment-btn">submit</button>
